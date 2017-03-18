@@ -1,16 +1,3 @@
-// import PuzzleBoard from './PuzzleBoard.js';
-// import Peg from './Peg.js';
-// import Torus from './Torus.js';
-//
-// const torusStack = Array(6).fill(0).map((v, index) => {
-//   const size = index+1;
-//   return new Torus({size});
-// });
-// const pegs = [new Peg({torusStack})];
-//
-// PuzzleBoard({pegs});
-
-
 const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d');
 const image = new Image();
@@ -40,43 +27,46 @@ const drawCicleClip = (ctx, {x, y}) => {
   ctx.restore();
 };
 
-const getMouseCoordinates = (canvas, {clientX, clientY}) => {
+const getClientXY = (event) => {
+  switch (event.type) {
+    case 'touchmove':
+      const { clientX: touchX, clientY: touchY } = event.touches[0];
+      return {
+        clientX: touchX,
+        clientY: touchY
+      };
+
+    case 'mousemove':
+      const { clientX, clientY } = event;
+      return {
+        clientX,
+        clientY
+      };
+
+    default:
+      return {};
+  }
+};
+
+const getCoordinates = (canvas, event) => {
   const { left, top }= canvas.getBoundingClientRect();
+  const { clientX, clientY } = getClientXY(event);
+  console.log(`x: ${clientX}, y: ${clientY}`);
   return {
     x: clientX - left,
     y: clientY - top
   };
 };
 
-const handleEvent = (event) => {
+const handleMoveEvent = (event) => {
   clearCanvas();
   drawCicleClip(
     ctx,
-    getMouseCoordinates(canvas, event)
+    getCoordinates(canvas, event)
   );
 };
 
 image.onload = () => {
-  canvas.addEventListener('mousemove', handleEvent);
-  canvas.addEventListener('touchmove', handleEvent);
+  canvas.addEventListener('mousemove', handleMoveEvent);
+  canvas.addEventListener('touchmove', handleMoveEvent);
 };
-
-// Create canvas for Hanoi game
-// const canvas = document.getElementById('hanoiCanvas');
-// const ctx = canvas.getContext('2d');
-//
-// const drawTower = () => {
-//   ctx.fillStyle = '#0FF';
-//   ctx.fillRect(canvas.width/2, canvas.height-10, 75, 10);
-//
-//   ctx.fillStyle = '#FF0';
-//   ctx.fillRect(canvas.width/2+10, canvas.height-20, 55, 10);
-//
-//   ctx.fillStyle = '#F0F';
-//   ctx.fillRect(canvas.width/2+20, canvas.height-30, 35, 10);
-//
-//   ctx.fillStyle = '#00F';
-//   ctx.fillRect(canvas.width/2+30, canvas.height-40, 15, 10);
-// }
-//
-// drawTower();
