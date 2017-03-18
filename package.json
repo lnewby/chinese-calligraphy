@@ -1,0 +1,44 @@
+{
+  "name": "chinese-calligraphy",
+  "version": "1.0.0",
+  "description": "Learn the 3000 most frequently used simplified Chinese characters (Hànzì) and there calligraphy form.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "WEBPACK_ENV=dev webpack-dev-server --host 192.168.1.121",
+    "build": "NODE_ENV=production webpack --config ./webpack.prod.config.js --progress --colors",
+    "test": "tape --require babel-register tests/*.tests.js | faucet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lnewby/chinese-calligraphy.git"
+  },
+  "author": "Lance Newby",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lnewby/chinese-calligraphy/issues"
+  },
+  "homepage": "https://github.com/lnewby/chinese-calligraphy#readme",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "autoprefixer-loader": "^3.2.0",
+    "babel-plugin-transform-object-rest-spread": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "faucet": "0.0.1",
+    "file-loader": "^0.10.0",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "tape": "^4.6.3",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.16.1",
+    "tape": "^4.6.3"
+  }
+}

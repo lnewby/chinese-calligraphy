@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+      content="width=800, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <style>
+      #hanoiCanvas {
+        display: flex;
+        border: 1px solid #333;
+        width: 720px;
+        height: 550px;
+      }
+
+      .page-wrapper {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      #myCanvas {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border: 0;
+        padding: 0;
+        margin: 0;
+      }
+
+      @media only screen
+        (min-device-width : 1366px) and
+        (orientation:landscape) {
+        #myCanvas {
+          margin: 30px;
+          padding: 30px;
+        }
+      }
+      /*body {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }*/
+    </style>
+  </head>
+  <body>
+    <!-- <div>Towers of Hanoi</div> -->
+    <!-- <div class="page-wrapper">
+      <canvas id="hanoiCanvas"></canvas>
+    </div> -->
+    <!-- <canvas id="myCanvas"></canvas> -->
+    <script src="bundle.js"></script>
+  </body>
+</html>
